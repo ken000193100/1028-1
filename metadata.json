@@ -1,0 +1,6 @@
+{
+  "name": "棉花回收設備 AI 輔助報價與零件查詢系統",
+  "description": "整合客戶需求評估、機台規格、BOM 零件展開、零件即時詢價、AI 智慧檢索、報價成本計算與多方審核、派工追蹤與情境驗收之工業級系統。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
