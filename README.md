@@ -30,3 +30,11 @@ pnpm start
 ```
 
 目前業務資料使用前端示範資料及記憶體狀態，重新整理後會重設，未連接持久化資料庫。
+
+## GitHub Pages
+
+GitHub Pages 發布網址：https://ken000193100.github.io/1028-1/
+
+倉庫 Settings → Pages → Source 設為 **GitHub Actions**。推送至 main 後，`.github/workflows/pages.yml` 會執行型別檢查、編譯前端，再發布 dist，不能直接發布含 `/src/main.tsx` 的原始 index.html。
+
+Pages 建置會設定 `GITHUB_PAGES=true`，使用 `/1028-1/` 資源路徑。Pages 只支援靜態網站，查詢與報價說明使用內建規則及示範資料，不會呼叫 Express 或 Gemini；Gemini 金鑰僅用於本機或可執行後端的主機，請勿放進前端。
