@@ -1,10 +1,19 @@
 import { AISearchResult } from '../types';
+import { generateDeterministicSearchAnswer } from './searchRules';
+declare const __STATIC_PAGES__: boolean;
 
 export async function queryAIKnowledgeBase(
   query: string,
   activeMachineId?: string,
   role?: string
 ): Promise<AISearchResult> {
+  if (__STATIC_PAGES__) {
+    const result = generateDeterministicSearchAnswer(query, activeMachineId);
+    return {
+      ...result,
+      warningMessage: ['GitHub Pages 示範模式：使用內建規則與示範資料，未連線 Gemini。', result.warningMessage].filter(Boolean).join('\n'),
+    };
+  }
   try {
     const res = await fetch('/api/gemini/search', {
       method: 'POST',
@@ -40,6 +49,7 @@ export async function generateAIQuotationSummary(payload: {
   aiDeliveryNotice: string;
 }> {
   try {
+    if (__STATIC_PAGES__) throw new Error('GitHub Pages uses the built-in quotation summary');
     const res = await fetch('/api/gemini/quote-summary', {
       method: 'POST',
       headers: {
